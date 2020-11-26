@@ -1,0 +1,795 @@
+/*Start of Sky Code*/
+
+/*Lets start with the cloud formation rather*/
+
+/*The container will also serve as the SKY*/
+
+/**{ margin: 0; padding: 0;}*/
+
+body {
+	/*To hide the horizontal scroller appearing during the animation*/
+	/*overflow: hidden;*/
+}
+
+/* LucidLink */
+
+#lucidlink {
+	font-size: 0.8em;
+	color: #1a80ff;
+	text-align: center;
+	padding-top: 2em;
+	padding-bottom: 2em;
+}
+
+.lucidlink {
+	color: #0072ff;
+	text-decoration: underline;
+	text-transform: uppercase;
+}
+
+/* Mini-contact */
+
+#minicontact, #miniannounce {
+	position: fixed;
+	text-align: center;
+	bottom: 0%;
+	width: 100%;
+	background-color: #0072ff;
+	color: #ffffff;
+	padding-top: 0.5em;
+	padding-bottom: 0.5em;
+}
+
+#miniannounce { 
+	position: absolute;
+	top: 0%;
+	bottom: initial;
+}
+
+.clouds {
+	padding: 150px 0;
+	background: #c9dbe9;
+	background: -webkit-linear-gradient(top, #c9dbe9 0%, #fff 100%);
+	background: -linear-gradient(top, #c9dbe9 0%, #fff 100%);
+	background: -moz-linear-gradient(top, #c9dbe9 0%, #fff 100%);
+}
+
+/*Time to finalise the cloud shape*/
+.cloud {
+	width: 200px; height: 60px;
+	background: #fff;
+	border-radius: 200px;
+	-moz-border-radius: 200px;
+	-webkit-border-radius: 200px;
+	
+	position: relative; 
+}
+
+.cloud:before, .cloud:after {
+	content: '';
+	position: absolute; 
+	background: #fff;
+	width: 100px; height: 80px;
+	position: absolute; top: -15px; left: 10px;
+	
+	border-radius: 100px;
+	-moz-border-radius: 100px;
+	-webkit-border-radius: 100px;
+	
+	-webkit-transform: rotate(30deg);
+	transform: rotate(30deg);
+	-moz-transform: rotate(30deg);
+}
+
+.cloud:after {
+	width: 120px; height: 120px;
+	top: -55px; left: auto; right: 15px;
+}
+
+/*Time to animate*/
+.x1 {
+	-webkit-animation: moveclouds 15s linear infinite;
+	-moz-animation: moveclouds 15s linear infinite;
+	-o-animation: moveclouds 15s linear infinite;
+}
+
+/*variable speed, opacity, and position of clouds for realistic effect*/
+.x2 {
+	left: 200px;
+	
+	-webkit-transform: scale(0.6);
+	-moz-transform: scale(0.6);
+	transform: scale(0.6);
+	opacity: 0.6; /*opacity proportional to the size*/
+	
+	/*Speed will also be proportional to the size and opacity*/
+	/*More the speed. Less the time in 's' = seconds*/
+	-webkit-animation: moveclouds 25s linear infinite;
+	-moz-animation: moveclouds 25s linear infinite;
+	-o-animation: moveclouds 25s linear infinite;
+}
+
+.x3 {
+	left: -250px; top: -200px;
+	
+	-webkit-transform: scale(0.8);
+	-moz-transform: scale(0.8);
+	transform: scale(0.8);
+	opacity: 0.8; /*opacity proportional to the size*/
+	
+	-webkit-animation: moveclouds 20s linear infinite;
+	-moz-animation: moveclouds 20s linear infinite;
+	-o-animation: moveclouds 20s linear infinite;
+}
+
+.x4 {
+	left: 470px; top: -250px;
+	
+	-webkit-transform: scale(0.75);
+	-moz-transform: scale(0.75);
+	transform: scale(0.75);
+	opacity: 0.75; /*opacity proportional to the size*/
+	
+	-webkit-animation: moveclouds 18s linear infinite;
+	-moz-animation: moveclouds 18s linear infinite;
+	-o-animation: moveclouds 18s linear infinite;
+}
+
+.x5 {
+	left: -150px; top: -150px;
+	
+	-webkit-transform: scale(0.8);
+	-moz-transform: scale(0.8);
+	transform: scale(0.8);
+	opacity: 0.8; /*opacity proportional to the size*/
+	
+	-webkit-animation: moveclouds 20s linear infinite;
+	-moz-animation: moveclouds 20s linear infinite;
+	-o-animation: moveclouds 20s linear infinite;
+}
+
+@-webkit-keyframes moveclouds {
+	0% {margin-left: 1000px;}
+	100% {margin-left: -1000px;}
+}
+@-moz-keyframes moveclouds {
+	0% {margin-left: 1000px;}
+	100% {margin-left: -1000px;}
+}
+@-o-keyframes moveclouds {
+	0% {margin-left: 1000px;}
+	100% {margin-left: -1000px;}
+}
+
+/* Font Styles */
+
+.latoize {
+	font-family: 'Lato',sans-serif;
+	font-weight: 300;
+}
+
+/* Logo Style */
+
+.logo {
+	width:25%; 
+	margin:0 auto;
+	z-index: 1000;
+}
+
+/* 
+Styles for the html/body for special modal where we want 3d effects
+Note that we need a container wrapping all content on the page for the 
+perspective effects (not including the modals and the overlay).
+*/
+.md-perspective,
+.md-perspective body {
+	height: 100%;
+	overflow: hidden;
+}
+
+.md-perspective body  {
+	background: #222;
+	-webkit-perspective: 600px;
+	-moz-perspective: 600px;
+	perspective: 600px;
+}
+
+.container {
+	background: #fff;
+	min-height: 100vh;
+}
+
+.md-modal {
+	position: fixed;
+	background-color: #dadada;
+	top: 0%;
+	left: 0%;
+	width: 100%;
+/*	max-width: 630px;*/
+/*	min-width: 320px;*/
+	height: 100%;
+	z-index: 9999;
+	visibility: hidden;
+	-webkit-backface-visibility: hidden;
+	-moz-backface-visibility: hidden;
+	backface-visibility: hidden;
+/*	-webkit-transform: translateX(-50%) translateY(-50%);
+	-moz-transform: translateX(-50%) translateY(-50%);
+	-ms-transform: translateX(-50%) translateY(-50%);
+	transform: translateX(-50%) translateY(-50%);*/
+}
+
+.md-show {
+	visibility: visible;
+}
+
+.md-overlay {
+	position: fixed;
+	width: 100%;
+	height: 100%;
+	visibility: hidden;
+	top: 0;
+	left: 0;
+	z-index: 1000;
+	opacity: 0;
+	background: rgba(143,27,15,0.8);
+	-webkit-transition: all 0.3s;
+	-moz-transition: all 0.3s;
+	transition: all 0.3s;
+}
+
+.md-show ~ .md-overlay {
+	opacity: 1;
+	visibility: visible;
+}
+
+/* Content styles */
+.md-content {
+	color: #fff;
+	background: #e74c3c;
+	position: relative;
+	border-radius: 3px;
+	margin: 0 auto;
+}
+
+.md-content h3 {
+	margin: 0;
+	padding: 0.4em;
+	text-align: center;
+	font-size: 2.4em;
+	font-weight: 300;
+	opacity: 0.8;
+	background: rgba(0,0,0,0.1);
+	border-radius: 3px 3px 0 0;
+}
+
+.md-content > div {
+	padding: 15px 40px 30px;
+	margin: 0;
+	font-weight: 300;
+	font-size: 1.15em;
+}
+
+.md-content > div p {
+	margin: 0;
+	padding: 10px 0;
+}
+
+.md-content > div ul {
+	margin: 0;
+/*	padding: 0 0 30px 20px;*/
+}
+
+.md-content > div ul li {
+	padding: 5px 0;
+}
+
+.md-content button {
+	display: block;
+	margin: 0 auto;
+	font-size: 0.8em;
+}
+
+/* Individual modal styles with animations/transitions */
+
+/* Effect 4: Newspaper */
+.md-effect-4 .md-content {
+	-webkit-transform: scale(0) rotate(720deg);
+	-moz-transform: scale(0) rotate(720deg);
+	-ms-transform: scale(0) rotate(720deg);
+	transform: scale(0) rotate(720deg);
+	opacity: 0;
+	height: 100vh;
+}
+
+.md-show.md-effect-4 ~ .md-overlay,
+.md-effect-4 .md-content {
+	-webkit-transition: all 0.5s;
+	-moz-transition: all 0.5s;
+	transition: all 0.5s;
+}
+
+.md-show.md-effect-4 .md-content {
+	-webkit-transform: scale(1) rotate(0deg);
+	-moz-transform: scale(1) rotate(0deg);
+	-ms-transform: scale(1) rotate(0deg);
+	transform: scale(1) rotate(0deg);
+	opacity: 1;
+}
+
+.md-effect-4 .md-close {
+	position: fixed;
+	top: 2.5%;
+	right: 2.5%;
+	color: #000;
+}
+
+
+/* Effect 12:  Just me */
+.md-effect-12 .md-content {
+	-webkit-transform: scale(0.8);
+	-moz-transform: scale(0.8);
+	-ms-transform: scale(0.8);
+	transform: scale(0.8);
+	opacity: 0;
+	-webkit-transition: all 0.3s;
+	-moz-transition: all 0.3s;
+	transition: all 0.3s;
+}
+
+.md-show.md-effect-12 ~ .md-overlay {
+	background: #e74c3c;
+} 
+
+.md-effect-12 .md-content h3,
+.md-effect-12 .md-content {
+	background: transparent;
+}
+
+.md-effect-12 p {
+	text-align: center;
+}
+
+.md-show.md-effect-12 .md-content {
+	-webkit-transform: scale(1);
+	-moz-transform: scale(1);
+	-ms-transform: scale(1);
+	transform: scale(1);
+	opacity: 1;
+}
+
+
+@media screen and (max-width: 32em) {
+	body { font-size: 75%; }
+}
+
+/* Tab Styles */
+.tabs {
+	position: relative;
+	overflow: hidden;
+	margin: 0 auto;
+	width: 100%;
+	font-weight: 300;
+}
+
+/* Nav */
+.what-to-do {
+	font-size: 1.1em!important;
+	text-align: center;
+}
+.tabs nav {
+	text-align: center;
+}
+
+.tabs nav ul {
+	position: relative;
+	display: -ms-flexbox;
+	display: -webkit-flex;
+	display: -moz-flex;
+	display: -ms-flex;
+	display: flex;
+	margin: 0 auto;
+	padding: 0;
+	max-width: 1200px;
+	list-style: none;
+	-ms-box-orient: horizontal;
+	-ms-box-pack: center;
+	-webkit-flex-flow: row wrap;
+	-moz-flex-flow: row wrap;
+	-ms-flex-flow: row wrap;
+	flex-flow: row wrap;
+	-webkit-justify-content: center;
+	-moz-justify-content: center;
+	-ms-justify-content: center;
+	justify-content: center;
+}
+
+.tabs nav ul li {
+	position: relative;
+	z-index: 1;
+	display: block;
+	margin: 0;
+	text-align: center;
+	-webkit-flex: 1;
+	-moz-flex: 1;
+	-ms-flex: 1;
+	flex: 1;
+}
+
+.tabs nav a {
+	position: relative;
+	display: block;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	line-height: 2.5;
+}
+
+.tabs nav a span {
+	vertical-align: middle;
+	font-size: 1.5em;
+	color: #000;
+}
+
+.tabs nav li.tab-current a {
+	color: #74777b;
+}
+
+.tabs nav a:focus {
+	outline: none;
+}
+
+/* Content */
+.content-wrap {
+	position: relative;
+}
+
+.content-wrap section {
+	display: none;
+	margin: 0 auto;
+	padding: 1em;
+	max-width: 1200px;
+	text-align: center;
+}
+
+.content-wrap section.content-current {
+	display: block;
+}
+
+.content-wrap section p {
+	margin: 0;
+	padding: 0.75em 0;
+	color: rgba(40,44,42,0.05);
+	font-weight: 900;
+	font-size: 4em;
+	line-height: 1;
+}
+
+/* Fallback */
+.no-js .content-wrap section {
+	display: block;
+	padding-bottom: 2em;
+	border-bottom: 1px solid rgba(255,255,255,0.6);
+}
+
+.no-flexbox nav ul {
+	display: block;
+}
+
+.no-flexbox nav ul li {
+	min-width: 15%;
+	display: inline-block;
+}
+
+@media screen and (max-width: 58em) {
+	.tabs nav a.icon span {
+		display: none;
+	}
+	.tabs nav a:before {
+		margin-right: 0;
+	}
+}
+
+
+/*****************************/
+/* Line */
+/*****************************/
+
+.tabs-style-line nav ul {
+/*	padding: 0 2em;*/
+	max-width: none;
+	box-shadow: inset 0 -2px #d1d3d2;
+}
+
+.tabs-style-line nav a {
+	padding: 0.7em 0.4em;
+	box-shadow: inset 0 -2px #d1d3d2;
+	color: #fff!important;
+	text-decoration: none;
+	text-align: left;
+	text-transform: uppercase;
+	letter-spacing: 1px;
+	font-weight: 700;
+	font-size: 0.8em;
+	line-height: 1;
+	-webkit-transition: color 0.3s, box-shadow 0.3s;
+	transition: color 0.3s, box-shadow 0.3s;
+}
+
+.tabs-style-line nav a:hover,
+.tabs-style-line nav a:focus {
+	box-shadow: inset 0 -2px #0072ff;
+}
+
+.tabs-style-line nav li.tab-current a {
+	box-shadow: inset 0 -2px #0072ff;
+	color: #0072ff;
+/*	text-shadow: 0 1px 2px rgba(0,0,0,.6);*/
+}
+
+@media screen and (max-width: 58em) {
+	.tabs-style-line nav ul {
+		display: block;
+		box-shadow: none;
+	}
+	.tabs-style-line nav ul li {
+		display: block;
+		-webkit-flex: none;
+		flex: none;
+	}
+}
+
+/* End Tab Syles */
+
+/* Our Beers */
+
+.beer-container p {
+	position: relative!important;
+	font-size: 1.25em!important;
+	color: #000!important;
+	-webkit-transform: translateX(0%) translateY(0%);
+    -moz-transform: translateX(0%) translateY(0%);
+    -ms-transform: translateX(0%) translateY(0%);
+    -o-transform: translateX(0%) translateY(0%);
+    top: auto;
+    left: auto;
+    width: 100%;
+    font-weight: 400!important;
+    text-align: initial;
+    line-height: 1.4!important;
+}
+
+.beer-container {
+	margin-top: 2em;
+}
+
+.rating {
+/*	border:1px solid #ffff00;*/
+/*	border-radius: 4px;*/
+	padding: 1em;
+	box-shadow: 0 0 5px;
+	color: #0072ff;
+}
+
+.rating i {
+	color: #ffff00;
+	text-shadow: 1px 1px 2px rgba(0,0,0,.9);
+}
+
+.cta-sample, .cta-partner {
+	color: #fff;
+	background-color: #0072ff;
+	padding: 1em 2em;
+	display: block;
+	text-align: center;
+	text-transform: uppercase;
+	margin-top: 2em;
+	border-radius: 4px;
+	text-shadow: 1px 1px 2px rgba(0,0,0,.6);
+}
+
+.cta-sample:hover, .cta-sample:focus, .cta-partner:hover,.cta-partner:focus {
+	text-decoration: none;
+	color: #fff;
+	background-color: #00ff00;
+}
+
+.partner-prompt {
+	text-align: center;
+	margin-bottom: 2.5em;
+	font-size: 1.5em!important;
+	color: #0072ff;
+}
+
+.cta-partner {
+	width: 50%;
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+
+.cta-partner-float {
+	position: fixed;
+	right: 2.5%;
+	top: 2.5%;
+	z-index: 15000;
+	color: #fff;
+	padding: 1em 1.5em;
+	background-color: #0072ff;
+	border-radius: 4px;
+}
+
+/* Marketing Section */
+
+#section4 p {
+	text-align: center;
+}
+
+.partner-logos {
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 1.5em;
+}
+
+.sample-prompt {
+	text-align: center;
+	color: #0072ff;
+	margin-top: 2em;
+	border-radius: 4px;
+	border: 1px solid #00b3ff;
+}
+
+/* Nav mobile optimisation */
+
+/* Map Styles */
+
+
+
+#google-container {
+  position: relative;
+  width: 100%;
+  height: 200px;
+  background-color: #e7eaf0;
+}
+@media only screen and (min-width: 768px) {
+  #google-container {
+    height: 300px;
+  }
+}
+@media only screen and (min-width: 1170px) {
+  #google-container {
+    height: 600px;
+  }
+}
+
+#cd-google-map {
+  position: relative;
+}
+#cd-google-map address {
+  position: absolute;
+  width: 100%;
+  bottom: 0;
+  left: 0;
+  padding: 1em 1em;
+  background-color: rgba(0, 179, 255, 0.9);
+  color: white;
+  font-size: 13px;
+  font-size: 0.8125rem;
+}
+@media only screen and (min-width: 768px) {
+  #cd-google-map address {
+    font-size: 15px;
+    font-size: 0.9375rem;
+    text-align: center;
+  }
+}
+
+#cd-zoom-in, #cd-zoom-out {
+  height: 32px;
+  width: 32px;
+  cursor: pointer;
+  margin-left: 10px;
+  background-color: rgba(0, 179, 255, 0.9);
+  background-repeat: no-repeat;
+  background-size: 32px 64px;
+  background-image: url("../img/location/cd-icon-controller.svg");
+}
+.no-touch #cd-zoom-in:hover, .no-touch #cd-zoom-out:hover {
+  background-color: #d36868;
+}
+@media only screen and (min-width: 768px) {
+  #cd-zoom-in, #cd-zoom-out {
+    margin-left: 50px;
+  }
+}
+
+#cd-zoom-in {
+  background-position: 50% 0;
+  margin-top: 10px;
+  margin-bottom: 1px;
+}
+@media only screen and (min-width: 768px) {
+  #cd-zoom-in {
+    margin-top: 50px;
+  }
+}
+
+#cd-zoom-out {
+  background-position: 50% -32px;
+}
+
+/* Weihenstephaner Info */
+
+.weihenstephan-info img {
+	max-height: 40vh;
+	margin: 2em auto;
+}
+
+.weihenstephan-info h3 {
+	color: #0072ff;
+	font-size: 1.4em;
+	margin: 2em auto;
+	letter-spacing: 0.1em;
+	text-transform: uppercase;
+}
+
+.weihenstephan-info p {
+	letter-spacing: 0.1em;
+	line-height: 1.3em;
+}
+
+.weihenstephan-info .cta-sample {
+	margin: 2em auto;
+}
+
+.weihenstephan-info h2 {
+	margin: 2em auto;
+	text-align: center;
+	text-transform: uppercase;
+}
+
+.beer-machines h2 {
+	margin: 3em auto!important;
+}
+
+.beer-machine-pic {
+	max-height: 50vh;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.wbad {
+	list-style-type: none;
+}
+
+.wbad li {
+	margin-top: 1.6em;
+}
+
+.wbad img {
+	max-width: 2em;
+	vertical-align: middle;
+	margin-right: 1em;
+}
+
+.close-weihenstephanerModal, .close-schweigerModal, .close-veldensteinerModal {
+	position: absolute;
+	top: 2.5%;
+	left: 2.5%;
+	z-index: 9999;
+	color: #0072ff;
+	padding: 0.5em;
+	border: 1px solid #0072ff;
+	border-radius: 3px;
+}
+
+.close-weihenstephanerModal:hover, .close-weihenstephanerModal:focus, .close-weihenstephanerModal:hover, .close-schweigerModal:hover, .close-veldensteinerModal:hover {
+	color: #00ff00;
+	border-color: #00ff00;
+}
+
+.beer-machines p {
+	text-align: center;
+}
