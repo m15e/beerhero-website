@@ -11,6 +11,7 @@
 ## Tags
 
 - Website design & development
+- Copy Writing
 - Landing Page
 - Sales Page
 - Mobile Responsive
